@@ -4,7 +4,7 @@ const client = new Client({
   node: 'http://localhost:9200',
   auth: {
     username: 'elastic',
-    password: 'dfattack',
+    password: 'palette',
   },
   requestTimeout: 60000,
   maxRetries: 3,
