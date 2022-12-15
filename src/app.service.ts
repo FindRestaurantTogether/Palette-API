@@ -28,7 +28,7 @@ export class AppService {
           phone_number: row._source['phone_number'],
           work_hour: row._source['work_hour'],
           menu: row._source['menu'],
-          blog: row._source['blog'],
+          sns: row._source['blog'],
           review: row._source['review'],
           menu_image: row._source['menu_image'],
           color: row._source['color'],
@@ -40,5 +40,12 @@ export class AppService {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async test(restaurant: RestaurantDto) {
+    return {
+      index: 'restaurants_gangnam',
+      body: restaurant,
+    };
   }
 }

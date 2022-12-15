@@ -22,7 +22,8 @@ async function bootstrap() {
     console.error(error);
   }
 
+  app.enableCors();
   await app.listen(3000);
 }
 
-bootstrap();
+bootstrap().then();
