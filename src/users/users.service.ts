@@ -44,8 +44,10 @@ export class UsersService {
     return uid.uid;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async updateName(updateUserDto: UpdateUserDto) {
+    return this.repository.update(updateUserDto.uid, {
+      name: updateUserDto.name,
+    });
   }
 
   async remove(uid: string) {

@@ -53,9 +53,13 @@ export class UsersController {
     return this.usersService.findUidByEmail(email);
   }
 
-  @Patch('update/:id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  @ApiOperation({
+    summary: '사용자 닉네임 변경',
+    description: '사용자 닉네임을 변경합니다.',
+  })
+  @Patch('name')
+  update(@Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.updateName(updateUserDto);
   }
 
   @ApiOperation({
