@@ -14,16 +14,17 @@ export class FriendsService {
     return await this.repository.insert({
       uid_src: uid_src,
       uid_dst: uid_dst,
-      accepted: 1,
+      accepted: 0,
     });
   }
 
-  findAll() {
-    return `This action returns all friends`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} friend`;
+  getList(uid: string) {
+    return this.repository
+      .createQueryBuilder('friend')
+      .where('friend.uid_src = :uid', { uid: uid })
+      .orWhere('friend.uid_dst = :uid', { uid: uid })
+      .andWhere('friend.accepted = 1')
+      .getMany();
   }
 
   update(id: number, updateFriendDto: UpdateFriendDto) {

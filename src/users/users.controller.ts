@@ -5,7 +5,7 @@ import {
   Get,
   Param,
   Patch,
-  Post,
+  Put,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -21,7 +21,7 @@ export class UsersController {
     summary: '사용자 추가',
     description: '사용자를 추가합니다.',
   })
-  @Post()
+  @Put('create')
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -30,7 +30,7 @@ export class UsersController {
     summary: '사용자 조회',
     description: '모든 사용자를 조회합니다.',
   })
-  @Get()
+  @Get('find-all')
   findAll() {
     return this.usersService.findAll();
   }
@@ -39,7 +39,7 @@ export class UsersController {
     summary: 'uid 조회',
     description: 'uid를 조회합니다.',
   })
-  @Get(':uid')
+  @Get('find-uid/:uid')
   findUid(@Param('uid') uid: string) {
     return this.usersService.findUid(uid);
   }
@@ -48,12 +48,12 @@ export class UsersController {
     summary: 'email로 uid 조회',
     description: 'email로 uid를 조회합니다.',
   })
-  @Get(':email')
+  @Get('find-email/:email')
   findUidByEmail(@Param('email') email: string) {
     return this.usersService.findUidByEmail(email);
   }
 
-  @Patch(':id')
+  @Patch('update/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
@@ -62,7 +62,7 @@ export class UsersController {
     summary: '회원 탈퇴',
     description: '해당 uid 사용자의 정보를 제거합니다.',
   })
-  @Delete(':uid')
+  @Delete('delete/:uid')
   remove(@Param('uid') uid: string) {
     return this.usersService.remove(uid);
   }

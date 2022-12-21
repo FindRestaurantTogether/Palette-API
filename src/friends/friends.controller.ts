@@ -10,7 +10,7 @@ import {
 import { FriendsService } from './friends.service';
 import { CreateFriendDto } from './dto/create-friend.dto';
 import { UpdateFriendDto } from './dto/update-friend.dto';
-import { ApiProperty, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../users/users.service';
 
 @ApiTags('Friends')
@@ -21,10 +21,11 @@ export class FriendsController {
     private readonly friendsService: FriendsService,
   ) {}
 
-  @ApiProperty({
-    description: '친구 요청',
+  @ApiOperation({
+    summary: '친구 추가 요청',
+    description: '친구 추가를 요청합니다.',
   })
-  @Post()
+  @Post('request')
   async create(@Body() createFriendDto: CreateFriendDto) {
     const uid_src = await this.usersService.findUid(createFriendDto.uid_src);
     const uid_dst = await this.usersService.findUidByEmail(
@@ -38,14 +39,13 @@ export class FriendsController {
     return this.friendsService.create(uid_src, uid_dst);
   }
 
-  @Get()
-  findAll() {
-    return this.friendsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.friendsService.findOne(+id);
+  @ApiOperation({
+    summary: '친구 목록',
+    description: '친구 목록을 조회합니다.',
+  })
+  @Get('list/:uid')
+  getList(@Param('uid') uid: string) {
+    return this.friendsService.getList(uid);
   }
 
   @Patch(':id')
