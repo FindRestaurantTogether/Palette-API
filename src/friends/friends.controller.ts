@@ -1,15 +1,7 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Patch,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { FriendsService } from './friends.service';
 import { CreateFriendDto } from './dto/create-friend.dto';
-import { UpdateFriendDto } from './dto/update-friend.dto';
+import { DeleteFriendDto } from './dto/delete-friend.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UsersService } from '../users/users.service';
 
@@ -25,7 +17,7 @@ export class FriendsController {
     summary: '친구 추가 요청',
     description: '친구 추가를 요청합니다.',
   })
-  @Post('request')
+  @Post()
   async create(@Body() createFriendDto: CreateFriendDto) {
     const uid_src = await this.usersService.findUid(createFriendDto.uid_src);
     const uid_dst = await this.usersService.findUidByEmail(
@@ -48,13 +40,12 @@ export class FriendsController {
     return this.friendsService.getList(uid);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFriendDto: UpdateFriendDto) {
-    return this.friendsService.update(+id, updateFriendDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.friendsService.remove(+id);
+  @ApiOperation({
+    summary: '친구 삭제',
+    description: '친구를 삭제합니다.',
+  })
+  @Delete()
+  remove(@Body() deleteFriendDto: DeleteFriendDto) {
+    return this.friendsService.remove(deleteFriendDto);
   }
 }

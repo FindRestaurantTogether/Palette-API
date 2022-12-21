@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateFriendDto } from './dto/update-friend.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Friend } from './entities/friend.entity';
+import { DeleteFriendDto } from './dto/delete-friend.dto';
 
 @Injectable()
 export class FriendsService {
@@ -12,8 +12,8 @@ export class FriendsService {
 
   async create(uid_src: string, uid_dst: string) {
     return await this.repository.insert({
-      uid_src: uid_src,
-      uid_dst: uid_dst,
+      uid_src: uid_src < uid_dst ? uid_src : uid_dst,
+      uid_dst: uid_src < uid_dst ? uid_dst : uid_src,
       accepted: 0,
     });
   }
@@ -27,11 +27,13 @@ export class FriendsService {
       .getMany();
   }
 
-  update(id: number, updateFriendDto: UpdateFriendDto) {
-    return `This action updates a #${id} friend`;
-  }
+  remove(deleteFriendDto: DeleteFriendDto) {
+    const uid_src = deleteFriendDto.uid_src;
+    const uid_dst = deleteFriendDto.uid_dst;
 
-  remove(id: number) {
-    return `This action removes a #${id} friend`;
+    return this.repository.delete({
+      uid_src: uid_src < uid_dst ? uid_src : uid_dst,
+      uid_dst: uid_src < uid_dst ? uid_dst : uid_src,
+    });
   }
 }
