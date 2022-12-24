@@ -10,7 +10,7 @@ export class FriendsService {
     @InjectRepository(Friend) private repository: Repository<Friend>,
   ) {}
 
-  async create(uid_src: string, uid_dst: string) {
+  async request(uid_src: string, uid_dst: string) {
     return await this.repository.insert({
       uid_src: uid_src < uid_dst ? uid_src : uid_dst,
       uid_dst: uid_src < uid_dst ? uid_dst : uid_src,
@@ -18,8 +18,22 @@ export class FriendsService {
     });
   }
 
-  getList(uid: string) {
-    return this.repository
+  async respond(uid_src: string, uid_dst: string) {
+    return await this.repository
+      .createQueryBuilder()
+      .update(Friend)
+      .set({ accepted: 1 })
+      .where('uid_src = :uid_src', {
+        uid_src: uid_src < uid_dst ? uid_src : uid_dst,
+      })
+      .andWhere('uid_dst = :uid_dst', {
+        uid_dst: uid_src < uid_dst ? uid_dst : uid_src,
+      })
+      .execute();
+  }
+
+  async getList(uid: string) {
+    return await this.repository
       .createQueryBuilder('friend')
       .where('friend.uid_src = :uid', { uid: uid })
       .orWhere('friend.uid_dst = :uid', { uid: uid })
@@ -27,11 +41,11 @@ export class FriendsService {
       .getMany();
   }
 
-  remove(deleteFriendDto: DeleteFriendDto) {
+  async remove(deleteFriendDto: DeleteFriendDto) {
     const uid_src = deleteFriendDto.uid_src;
     const uid_dst = deleteFriendDto.uid_dst;
 
-    return this.repository.delete({
+    return await this.repository.delete({
       uid_src: uid_src < uid_dst ? uid_src : uid_dst,
       uid_dst: uid_src < uid_dst ? uid_dst : uid_src,
     });
