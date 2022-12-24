@@ -5,12 +5,18 @@ export class Friend {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    length: 36,
+  })
   uid_src: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    length: 36,
+  })
   uid_dst: string;
 
   @Column()
-  accepted: number;
+  isAccepted: boolean;
 }

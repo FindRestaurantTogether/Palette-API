@@ -2,7 +2,10 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('users')
 export class User {
-  @PrimaryColumn()
+  @PrimaryColumn({
+    type: 'varchar',
+    length: 36,
+  })
   uid: string;
 
   @Column()
