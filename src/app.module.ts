@@ -11,7 +11,7 @@ import { Friend } from './friends/entities/friend.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'palette',
       port: 3306,
       username: 'root',
       password: 'palette',

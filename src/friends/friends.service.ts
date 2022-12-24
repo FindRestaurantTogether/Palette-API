@@ -14,7 +14,7 @@ export class FriendsService {
     return await this.repository.insert({
       uid_src: uid_src < uid_dst ? uid_src : uid_dst,
       uid_dst: uid_src < uid_dst ? uid_dst : uid_src,
-      accepted: 0,
+      isAccepted: false,
     });
   }
 
@@ -22,7 +22,7 @@ export class FriendsService {
     return await this.repository
       .createQueryBuilder()
       .update(Friend)
-      .set({ accepted: 1 })
+      .set({ isAccepted: true })
       .where('uid_src = :uid_src', {
         uid_src: uid_src < uid_dst ? uid_src : uid_dst,
       })
@@ -37,7 +37,7 @@ export class FriendsService {
       .createQueryBuilder('friend')
       .where('friend.uid_src = :uid', { uid: uid })
       .orWhere('friend.uid_dst = :uid', { uid: uid })
-      .andWhere('friend.accepted = 1')
+      .andWhere('friend.isAccepted = :isAccepted', { isAccepted: true })
       .getMany();
   }
 
