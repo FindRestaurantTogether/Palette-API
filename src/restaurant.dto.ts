@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsNumber, IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 import { Entity } from 'typeorm';
 
-@Entity('NaviArtifactT')
+@Entity('Restaurant')
 export class RestaurantDto {
   @ApiProperty({
-    example: '강남구 신사동 541-17',
-    description: '지번 주소',
+    example: '막이오름',
+    description: '식당 이름',
   })
   @IsString()
-  lot_address: string;
+  name: string;
 
   @ApiProperty({
     example: '강남구 가로수길 10',
@@ -19,32 +19,25 @@ export class RestaurantDto {
   road_address: string;
 
   @ApiProperty({
-    example: '막이오름',
-    description: '식당 이름',
+    example: '강남구 신사동 541-17',
+    description: '지번 주소',
   })
   @IsString()
-  name: string;
-
-  @ApiProperty({
-    example: ['술집', '요리주점'],
-    description: '식당 카테고리',
-  })
-  @IsString()
-  category: string[];
-
-  @ApiProperty({
-    example: ['가로수길술집', '신사동포차', '발렛파킹'],
-    description: '식당 태그',
-  })
-  @IsArray()
-  feature: string[];
+  jibun_address: string;
 
   @ApiProperty({
     example: '02-123-4567',
     description: '식당 전화번호',
   })
   @IsString()
-  phone_number: string;
+  call: string;
+
+  @ApiProperty({
+    example: '고기(구이)',
+    description: '식당 카테고리',
+  })
+  @IsString()
+  category: string;
 
   @ApiProperty({
     example: [
@@ -57,7 +50,21 @@ export class RestaurantDto {
     description: '식당 영업시간',
   })
   @IsArray()
-  work_hour: object[];
+  opening_hour: object[];
+
+  @ApiProperty({
+    example: ['가로수길술집', '신사동포차', '발렛파킹'],
+    description: '식당 테마',
+  })
+  @IsArray()
+  theme: string[];
+
+  @ApiProperty({
+    example: ['주차', '포장', '배달', '와이파이', '예약'],
+    description: '서비스',
+  })
+  @IsArray()
+  service: string[];
 
   @ApiProperty({
     example: {
@@ -71,18 +78,18 @@ export class RestaurantDto {
   menu: object[];
 
   @ApiProperty({
-    example: 'https://www.instagram.com/maekyo/',
-    description: '식당 SNS 주소',
+    example: [],
+    description: '내부 사진',
   })
-  @IsString()
-  sns: string;
+  @IsArray()
+  inner_image: string[];
 
   @ApiProperty({
-    example: 123,
-    description: '식당 네이버 리뷰수',
+    example: [],
+    description: '외부 사진',
   })
-  @IsNumber()
-  review: number;
+  @IsArray()
+  outer_image: string[];
 
   @ApiProperty({
     example: [
@@ -93,32 +100,4 @@ export class RestaurantDto {
   })
   @IsArray()
   menu_image: string[];
-
-  @ApiProperty({
-    example: 'blue',
-    description: '색상',
-  })
-  @IsString()
-  color: string;
-
-  @ApiProperty({
-    example: ['해산물', '분식', '고기(구이)'],
-    description: '메뉴 카테고리',
-  })
-  @IsArray()
-  new_category: string[];
-
-  @ApiProperty({
-    example: ['주차', '포장', '배달', '와이파이', '예약'],
-    description: '서비스',
-  })
-  @IsArray()
-  service: string[];
-
-  @ApiProperty({
-    example: ['데이트', '고급', '단체', '친구', '가족'],
-    description: '식당 테마',
-  })
-  @IsArray()
-  atmosphere: string[];
 }

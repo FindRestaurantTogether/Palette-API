@@ -24,11 +24,11 @@ export class AppController {
   }
 
   @ApiOperation({
-    summary: '검색',
-    description: '검색',
+    summary: '테스트',
+    description: '테스트',
   })
-  @Get('post')
+  @Get('test')
   async searchPost(@Body('restaurant') restaurant: RestaurantDto, @Res() res) {
-    return res.end(await this.appService.test(restaurant));
+    return res.send(await this.appService.test(restaurant));
   }
 }
