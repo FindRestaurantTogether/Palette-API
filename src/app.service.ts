@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import client from './connection';
-import { RestaurantDto } from './restaurant.dto';
 
 @Injectable()
 export class AppService {
@@ -22,10 +21,12 @@ export class AppService {
     }
   }
 
-  async test(restaurant: RestaurantDto) {
-    return {
-      index: 'store_list',
-      body: restaurant,
-    };
+  async test() {
+    try {
+      const health = await client.cluster.health({});
+      console.log(health);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

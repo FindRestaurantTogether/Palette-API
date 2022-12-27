@@ -1,8 +1,7 @@
-import { Body, Controller, Get, Query, Res } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ApiImplicitQuery } from '@nestjs/swagger/dist/decorators/api-implicit-query.decorator';
-import { RestaurantDto } from './restaurant.dto';
 
 @ApiTags('Elasticsearch')
 @Controller('api')
@@ -28,7 +27,7 @@ export class AppController {
     description: '테스트',
   })
   @Get('test')
-  async searchPost(@Body('restaurant') restaurant: RestaurantDto, @Res() res) {
-    return res.send(await this.appService.test(restaurant));
+  test() {
+    return this.appService.test();
   }
 }
