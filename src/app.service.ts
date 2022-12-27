@@ -23,10 +23,9 @@ export class AppService {
 
   async test() {
     try {
-      const health = await client.cluster.health({});
-      console.log(health);
+      return await client.cluster.health({});
     } catch (error) {
-      console.error(error);
+      return error;
     }
   }
 }
