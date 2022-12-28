@@ -23,12 +23,16 @@ export class AppController {
   }
 
   @ApiOperation({
-    summary: '1번',
-    description: '1번',
+    summary: 'id로 하나 가져오기',
+    description: 'id로 하나 가져오기',
+  })
+  @ApiImplicitQuery({
+    name: 'id',
+    required: true,
   })
   @Get('findOne')
-  findOne() {
-    return this.appService.findOne();
+  findOneById(@Query('id') id) {
+    return this.appService.findOne(id);
   }
 
   @ApiOperation({
