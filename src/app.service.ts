@@ -13,6 +13,7 @@ export class AppService {
           multi_match: {
             query,
             fields: ['name', 'menu.name'],
+            operator: 'or',
           },
         },
       });
