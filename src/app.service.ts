@@ -11,9 +11,9 @@ export class AppService {
         index: 'store_list',
         query: {
           multi_match: {
-            query,
-            fields: ['name', 'menu.name'],
+            fields: ['name', 'theme', 'menu.name'],
             operator: 'or',
+            query,
           },
         },
       });
