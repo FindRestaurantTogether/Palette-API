@@ -26,13 +26,9 @@ export class AppService {
     try {
       const response = await elastic.search({
         index: 'store_list',
-        body: {
           query: {
-            match: {
-              id: id,
-            },
-          },
-        },
+		  match_all: {}
+	  }
       });
       return response.hits.hits[0]._source;
     } catch (error) {
