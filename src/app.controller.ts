@@ -23,6 +23,15 @@ export class AppController {
   }
 
   @ApiOperation({
+    summary: '1번',
+    description: '1번',
+  })
+  @Get('findOne')
+  findOne() {
+    return this.appService.findOne();
+  }
+
+  @ApiOperation({
     summary: '테스트',
     description: '테스트',
   })
