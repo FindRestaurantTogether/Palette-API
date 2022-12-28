@@ -5,7 +5,7 @@ import client from './connection';
 export class AppService {
   async search(keyword): Promise<unknown[]> {
     const query = keyword;
-	  const elastic = client;
+    const elastic = client;
     try {
       const response = await elastic.search({
         index: 'store_list',
@@ -21,14 +21,14 @@ export class AppService {
     }
   }
 
-  async findOne(id): Promise<unknown> {
+  async findAll(): Promise<unknown> {
     const elastic = client;
     try {
       const response = await elastic.search({
         index: 'store_list',
-          query: {
-		  match_all: {}
-	  }
+        query: {
+          match_all: {},
+        },
       });
       return response.hits.hits[0]._source;
     } catch (error) {
