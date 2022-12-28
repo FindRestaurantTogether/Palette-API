@@ -4,14 +4,14 @@ import client from './connection';
 @Injectable()
 export class AppService {
   async search(keyword): Promise<unknown[]> {
-    const query = keyword;
     const elastic = client;
     try {
       const response = await elastic.search({
         index: 'store_list',
         query: {
-          multi_match: {
-            query,
+          match: {
+            query: keyword,
+            operator: 'and',
           },
         },
       });
