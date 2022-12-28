@@ -5,13 +5,14 @@ import { GetGetResult } from '@elastic/elasticsearch/lib/api/types';
 @Injectable()
 export class AppService {
   async search(keyword): Promise<unknown[]> {
-    const elastic = client;
+    const query = keyword;
+	  const elastic = client;
     try {
       const response = await elastic.search({
         index: 'store_list',
         query: {
-          match: {
-            keyword,
+          multi_match: {
+            query,
           },
         },
       });
