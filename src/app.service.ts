@@ -30,7 +30,7 @@ export class AppService {
           match_all: {},
         },
       });
-      return response.hits.hits[0]._source;
+      return response.hits.hits.map((hit) => hit._source);
     } catch (error) {
       console.log(error);
     }
