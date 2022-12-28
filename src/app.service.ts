@@ -12,6 +12,7 @@ export class AppService {
         query: {
           multi_match: {
             query,
+            fields: ['name', 'menu.name'],
           },
         },
       });
