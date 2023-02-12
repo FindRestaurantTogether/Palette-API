@@ -12,14 +12,9 @@ export class AppController {
     summary: '검색',
     description: '검색',
   })
-  @ApiImplicitQuery({
-    name: 'query',
-    required: true,
-    description: '검색어',
-  })
   @Get('search')
-  search(@Query('query') query) {
-    return this.appService.search(query);
+  search(@Query('top_right_lat') top_right_lat:number, @Query('top_right_lon') top_right_lon:number, @Query('bottom_left_lat') bottom_left_lat:number, @Query('bottom_left_lon') bottom_left_lon:number, @Query('category') category:string[], @Query('text') text:string) {
+    return this.appService.search(top_right_lat, top_right_lon, bottom_left_lat, bottom_left_lon, category, text);
   }
 
   @ApiOperation({
