@@ -8,21 +8,7 @@ import { FriendsModule } from './friends/friends.module';
 import { Friend } from './friends/entities/friend.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'palette',
-      port: 3306,
-      username: 'root',
-      password: 'palette',
-      database: 'palette',
-      synchronize: true,
-      logging: true,
-      entities: [User, Friend],
-    }),
-    UsersModule,
-    FriendsModule,
-  ],
+  imports: [],
   controllers: [AppController],
   providers: [AppService],
 })
