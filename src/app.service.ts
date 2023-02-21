@@ -86,7 +86,7 @@ export class AppService {
     try {
       const response = await elastic.search({
         index: 'store_list',
-        size: 50,
+        size: 30,
         sort: [{ naver_cnt: 'desc' }, '_score'],
         query: {
           bool: {
