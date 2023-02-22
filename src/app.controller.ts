@@ -76,7 +76,14 @@ export class AppController {
       bottom_left_lon,
     );
   }
-
+  @ApiOperation({
+    summary: 'isopening',
+    description: 'isopening',
+  })
+  @Get('isopeing')
+  isopening(@Query('store_id') store_id: string) {
+    return this.appService.isopening(store_id);
+  }
   @ApiOperation({
     summary: '모두 가져오기',
     description: '모두 가져오기',

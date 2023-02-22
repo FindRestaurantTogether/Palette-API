@@ -130,6 +130,9 @@ export class AppService {
       console.log(error);
     }
   }
+  async isopening(store_id): Promise<unknown> {
+    return 'open';
+  }
   async findAll(): Promise<unknown> {
     const elastic = client;
     try {
