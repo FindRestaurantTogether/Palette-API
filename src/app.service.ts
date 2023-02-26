@@ -20,6 +20,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -85,6 +87,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -145,6 +149,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -202,6 +208,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -259,6 +267,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -317,6 +327,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -369,6 +381,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -418,6 +432,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -468,6 +484,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -520,6 +538,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -570,6 +590,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -623,6 +645,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               should: [
@@ -665,6 +689,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -707,6 +733,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -752,6 +780,8 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               must: [
@@ -797,6 +827,7 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
