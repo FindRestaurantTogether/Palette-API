@@ -14,8 +14,7 @@ export class AppService {
     text,
   ): Promise<unknown[]> {
     const elastic = client;
-    if (category && service && theme && text)
-    {
+    if (category && service && theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -80,9 +79,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && service && theme && text)
-    {
+    } else if (!category && service && theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -142,9 +139,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && !service && theme && text)
-    {
+    } else if (category && !service && theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -201,9 +196,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && service && !theme && text)
-    {
+    } else if (category && service && !theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -260,9 +253,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && service && theme && !text)
-    {
+    } else if (category && service && theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -320,9 +311,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && !service && theme && text)
-    {
+    } else if (!category && !service && theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -374,9 +363,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && !service && !theme && text)
-    {
+    } else if (category && !service && !theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -425,9 +412,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && service && !theme && !text)
-    {
+    } else if (category && service && !theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -477,9 +462,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && service && !theme && text)
-    {
+    } else if (!category && service && !theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -531,9 +514,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && !service && theme && !text)
-    {
+    } else if (category && !service && theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -583,9 +564,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && service && theme && !text)
-    {
+    } else if (!category && service && theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -638,9 +617,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && !service && !theme && text)
-    {
+    } else if (!category && !service && !theme && text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -682,9 +659,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (category && !service && !theme && !text)
-    {
+    } else if (category && !service && !theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -726,9 +701,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && service && !theme && !text)
-    {
+    } else if (!category && service && !theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -773,9 +746,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && !service && theme && !text)
-    {
+    } else if (!category && !service && theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -820,9 +791,7 @@ export class AppService {
       } catch (error) {
         console.log(error);
       }
-    }
-    else if (!category && !service && !theme && !text)
-    {
+    } else if (!category && !service && !theme && !text) {
       try {
         const response = await elastic.search({
           index: 'store_list',
@@ -919,6 +888,7 @@ export class AppService {
       const response = await elastic.get({
         index: 'store_list',
         id: store_id,
+        _source: ['location', 'main_category', 'naver_star'],
       });
       console.log(response);
       return { id: response._id, source: response._source };
