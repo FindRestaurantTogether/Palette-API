@@ -797,6 +797,7 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
+          _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
               filter: {
@@ -882,7 +883,17 @@ export class AppService {
     }
   }
   async isopening(store_id): Promise<unknown> {
-    return 'open';
+    const elastic = client;
+    try {
+      const response = await elastic.get({
+        index: 'store_list',
+        id: store_id,
+      });
+      console.log(response);
+      return { id: response._id, source: response._source };
+    } catch (error) {
+      console.log(error);
+    }
   }
   async findAll(): Promise<unknown> {
     const elastic = client;
