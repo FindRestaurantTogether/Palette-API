@@ -888,10 +888,11 @@ export class AppService {
       const response = await elastic.get({
         index: 'store_list',
         id: store_id,
-        _source: ['location', 'main_category', 'naver_star'],
+        _source: ['opening_hour', 'opening_breaktime', 'opening_lastorder'],
       });
-      console.log(response);
-      return { id: response._id, source: response._source };
+      console.log(response._source);
+      //return { id: response._id, source: response._source };
+      return 'open';
     } catch (error) {
       console.log(error);
     }
