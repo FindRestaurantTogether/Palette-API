@@ -67,20 +67,20 @@ export class AppController {
     return this.appService.isOpening(store_id);
   }
   @ApiOperation({
-    summary: '모두 가져오기',
-    description: '모두 가져오기',
-  })
-  @Get('find-all')
-  findOneById() {
-    return this.appService.findAll();
-  }
-  @ApiOperation({
     summary: 'check connection',
     description: 'check ElasticSearch Connection',
   })
   @Get('connection')
   elasticConnection() {
     return this.appService.elasticConnection();
+  }
+  @ApiOperation({
+    summary: 'find all',
+    description: 'test all data is good',
+  })
+  @Get('find-all')
+  findOneById() {
+    return this.appService.findAll();
   }
   @ApiOperation({
     summary: 'test search',
