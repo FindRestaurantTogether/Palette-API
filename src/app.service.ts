@@ -19,7 +19,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -50,6 +49,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -84,7 +93,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -110,6 +118,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -144,7 +162,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -167,6 +184,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -201,7 +228,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -224,6 +250,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -258,7 +294,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -316,7 +351,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -334,6 +368,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -368,7 +412,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -383,6 +426,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -417,7 +470,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -467,7 +519,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -485,6 +536,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -519,7 +580,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -569,7 +629,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -622,7 +681,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -630,6 +688,16 @@ export class AppService {
                 {
                   match: {
                     name: text,
+                  },
+                },
+                {
+                  match: {
+                    road_address: text,
+                  },
+                },
+                {
+                  match: {
+                    jibun_address: text,
                   },
                 },
               ],
@@ -664,7 +732,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -706,7 +773,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -751,7 +817,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -796,7 +861,6 @@ export class AppService {
         const response = await elastic.search({
           index: 'store_list',
           size: 30,
-          sort: [{ naver_star: 'desc' }, '_score'],
           _source: ['location', 'main_category', 'naver_star'],
           query: {
             bool: {
@@ -878,7 +942,9 @@ export class AppService {
           return 'breaktime';
         }
       }
-      if (today_opening_hour != 'None') {
+      if (today_opening_hour != '휴무') {
+        return 'closed';
+      } else if (today_opening_hour != 'None') {
         const timeline = today_opening_hour.split('-');
         const start = timeline[0].split(':');
         const startMinutes = Number(start[0]) * 60 + Number(start[1]);
