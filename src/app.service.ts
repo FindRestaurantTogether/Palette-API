@@ -942,7 +942,7 @@ export class AppService {
           return 'breaktime';
         }
       }
-      if (today_opening_hour != '휴무') {
+      if (today_opening_hour == '휴무') {
         return 'closed';
       } else if (today_opening_hour != 'None') {
         const timeline = today_opening_hour.split('-');
