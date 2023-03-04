@@ -949,7 +949,10 @@ export class AppService {
         const start = timeline[0].split(':');
         const startMinutes = Number(start[0]) * 60 + Number(start[1]);
         const end = timeline[1].split(':');
-        const endMinutes = Number(end[0]) * 60 + Number(end[1]);
+        let endMinutes = Number(end[0]) * 60 + Number(end[1]);
+        if (endMinutes < startMinutes) {
+          endMinutes += 24 * 60;
+        }
         if (nowMinutes >= startMinutes && nowMinutes <= endMinutes) {
           return 'open';
         } else {
